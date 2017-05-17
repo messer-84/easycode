@@ -21,18 +21,18 @@ console.log(`Task 1 - ${task1}`);
  */
 
 let array = [
-  'Он',//0
-  'был больше ни телом, к которому рано или поздно',//1
-  'он обнаружил',//2
-  'не',//3
-  'Так, когда Будда достиг Просветления',//4
-  '...',//5
-  'что больше',//6
-  'ощущает себя мишенью',//7
-  'не'//8
+  'Он',
+  'был больше ни телом, к которому рано или поздно',
+  'он обнаружил',
+  'не',
+  'Так, когда Будда достиг Просветления',
+  '...',
+  'что больше',
+  'ощущает себя мишенью',
+  'не'
 ];
 
-// 4,-2,-6-3-7.-0-не-1-5
+
 let homeSentence = `${array[4]}, ${array[2]}, ${array[6]} ${array[3]} ${array[7]}. ${array[0]} не ${array[1]} ${array[5]}`;
 
 console.log(`Task 2 - ${homeSentence}`);
@@ -59,8 +59,6 @@ console.log(myObj);
 let sliceString = 'Ytube';
 
 sliceString = `${sliceString.slice(0,1)}ou${sliceString.slice(1)}`;
-// sliceString = sliceString.slice(0,1) + 'ou' + sliceString.slice(1);
-// sliceString = sliceString.slice(0,1) + 'ou' + sliceString.slice(-4);
 
 console.log(sliceString);
 
