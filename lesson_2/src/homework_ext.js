@@ -58,7 +58,8 @@ console.log(myObj);
 
 let sliceString = 'Ytube';
 
-sliceString = `${sliceString.slice(0,1)}ou${sliceString.slice(1)}`;
+sliceString = `${sliceString[1]}ou${sliceString.slice(1)}`;
+// sliceString = `${sliceString.slice(0,1)}ou${sliceString.slice(1)}`;
 // sliceString = sliceString.slice(0,1) + 'ou' + sliceString.slice(1);
 // sliceString = sliceString.slice(0,1) + 'ou' + sliceString.slice(-4);
 
