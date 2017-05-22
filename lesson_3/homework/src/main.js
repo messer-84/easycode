@@ -68,15 +68,19 @@ console.log('Task - 2 ', simpleObjectGenerator(77, userNames, 'privet kak dela c
 var myName = {name: 'Maksim'};
 
 function addNameToUser(newKey, newValue, userName) {
+
+  let obj = {[newKey] : newValue};
+
   if (userName.name) {
-    return {
-      [newKey]: newValue,
-      name: userName.name
-    }
+    obj.name = userName.name
   }
 
+  return obj;
+
 }
-console.log('Task - 3 ', addNameToUser('family', 'Vorobyov', myName));
+console.log('Task - 3-1 ', addNameToUser('family', 'Vorobyov', myName));
+console.log('Task - 3-2 ', addNameToUser('family', 'Vorobyov', {}));
+
 
 /*
  -> @@ SUPER
@@ -124,7 +128,7 @@ function showSplitArray(myArray) {
   console.log(myArray.join(';'));
 }
 
-function superFunc(arg1, arg2, arg3, myFunc){
+function superFunc(arg1, arg2, arg3, myFunc) {
   return myFunc([arg1, arg2, arg3]);
 }
 
