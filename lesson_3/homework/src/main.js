@@ -65,21 +65,33 @@ console.log('Task - 2 ', simpleObjectGenerator(77, userNames, 'privet kak dela c
 /////////////////////////////////
 
 
-var myName = {name: 'Maksim'};
+let myName = {name: 'Maksim'};
 
 function addNameToUser(newKey, newValue, userName) {
 
-  let obj = {[newKey] : newValue};
+  let obj = {};
 
-  if (userName.name) {
-    obj.name = userName.name
+  if (newKey && newValue) {
+    if (userName.name) {
+      obj.name = userName.name;
+      obj[newKey] = newValue;
+    }
+    else {
+      obj[newKey] = newValue;
+    }
+  }
+  else if (userName.name) {
+    obj.name = userName.name;
   }
 
   return obj;
 
 }
+
 console.log('Task - 3-1 ', addNameToUser('family', 'Vorobyov', myName));
 console.log('Task - 3-2 ', addNameToUser('family', 'Vorobyov', {}));
+console.log('Task - 3-3 ', addNameToUser('', '', myName));
+console.log('Task - 3-4 ', addNameToUser('', '', {}));
 
 
 /*
