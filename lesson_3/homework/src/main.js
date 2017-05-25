@@ -146,5 +146,11 @@ function superFunc(arg1, arg2, arg3, myFunc) {
 
 superFunc(10, 20, 30, showSplitArray);
 
+function super2(arg1, arg2, arg3, newFunc) {
 
+}
+
+super2(10,20,30, function () {
+
+});
 
