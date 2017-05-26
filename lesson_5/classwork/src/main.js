@@ -95,6 +95,52 @@ var qwe = [1,2,3];
 // concat - создает новый массив
 
 
+const js = 'JavaScript_cool-language';
+
+const js2 = 'Javascript is cool language with awesome community';
+// перевернуть каждое слово
+
+// перевернуть  Javascript
+
+// function stringReverse(str) {
+//     let newArr =  str.split('-');
+//
+//     newArr[0].split('');
+//     // newArr.reverse();
+//     // newArr.join();
+//
+//     console.log(newArr);
+//
+// }
+
+// console.log(js.split('').reverse().join(''));
+
+// stringReverse(js);
+
+function manipArray(str) {
+
+    // превращаем строку в массив
+    let arr = str.split(' ');
+    for(let i = 0; i < arr.length; i++){
+        // из каждого элемента массива создать массив
+        let elem = arr[i];
+
+        elem = elem.split('');
+        elem = elem.reverse();
+        elem = elem.join();
+        // elem.split('').reverse().join();
+        console.log(elem);
+    }
+
+    // перевернуть массив
+    // склеить массив
+
+
+
+
+}
+
+manipArray(js2);
 
 
 
