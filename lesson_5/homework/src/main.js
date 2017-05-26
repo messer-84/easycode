@@ -113,6 +113,7 @@ let array = Array.from({length: 35}).map(
 function solution(paramArray) {
     let newAgeArray = [];
 
+
     for (let i = 0; i < paramArray.length; i++) {
         let item = paramArray[i];
 
