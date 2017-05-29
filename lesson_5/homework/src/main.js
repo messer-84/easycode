@@ -51,25 +51,46 @@ let numArray3 = [-4, -10, 25, 10];
 let numArray4 = [0, 200, 10, 25, 15];
 
 
-function minimalNumbers2(arr) {
-  arr.sort(function (a, b) {
-    return a - b;
-  });
+// function minimalNumbers2(arr) {
+//   arr.sort(function (a, b) {
+//     return a - b;
+//   });
+//
+//   return arr[0] + arr[1];
+// }
 
-  return arr[0] + arr[1];
+var count = 0;
+var newArray = [];
+
+function findMin(arr) {
+  var min = arr[0];
+  // поиск минимального значения дважды
+  if (count != 2) {
+    for (var i = 0; i < arr.length; i++) {
+      if (min > arr[i]) {
+        min = arr[i];
+      }
+
+    }
+    // после первой итерации - удаляем из массива 1-е минимальное число
+    if (count == 0) {
+      arr.splice(arr.indexOf(min), 1);
+    }
+
+    count++;
+
+    // минимальные значения заносятся в новый массив(массив минимальных чисел)
+    newArray.push(min);
+
+    findMin(arr);
+
+  }
+
+  return newArray[0] + newArray[1];
+  // return min + min;
 }
 
-// console.log(minimalNumbers2(numArray4));
-
-// function findMin(arr) {
-//   var min = arr[0];
-//   for (var i = 0; i < arr.length; i++) {
-//     if (min > arr[i]) {
-//       min = arr[i];
-//     }
-//   }
-//   return min;
-// }
+console.log('min num', findMin(numArray));
 
 
 /*
@@ -132,7 +153,7 @@ var supArr2 = [0, 8, 16, 32];// => 24
 var supArr3 = [4, 6, 8, 10];// => 2 // число сначала
 var supArr4 = [0, 16, 24, 32];// => 8
 var supArr5 = [0, 24, 72, 96];//48
-var supArr6 = [3,6,9,12];//3
+var supArr6 = [3, 6, 9, 12];//3
 var supArr7 = [1, 3, 5, 7, 9];// => 7
 
 
@@ -155,13 +176,13 @@ var supArr7 = [1, 3, 5, 7, 9];// => 7
 
 var newArr2 = [];
 
-findNum(supArr1);
-findNum(supArr2);
-findNum(supArr3);
-findNum(supArr4);
-findNum(supArr5);
-findNum(supArr6);
-findNum(supArr7);
+// findNum(supArr1);
+// findNum(supArr2);
+// findNum(supArr3);
+// findNum(supArr4);
+// findNum(supArr5);
+// findNum(supArr6);
+// findNum(supArr7);
 
 
 function findNum(arr) {
@@ -175,24 +196,23 @@ function findNum(arr) {
       if ((nextElem - elem) !== (elem - prevElem)) {
 
         if ((nextElem - elem) > (elem - prevElem)) {
-          return console.log( 'missing number is -', nextElem - (elem - prevElem));
+          return console.log('missing number is -', nextElem - (elem - prevElem));
         }
         else {
-          return console.log( 'missing number is -', ((nextElem - elem) + prevElem));
+          return console.log('missing number is -', ((nextElem - elem) + prevElem));
         }
       }
       else {
         // return console.log("missing number isn't");
       }
     }
-    else{
-      return console.log( 'missing number is -', (nextElem - elem));
+    else {
+      return console.log('missing number is -', (nextElem - elem));
     }
   }
 
 }
 
-// if(arr[1] - arr[0]  arr[arr.length - 1] arr[arr] )
 
 function random(arr) {
 }
