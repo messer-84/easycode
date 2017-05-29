@@ -1,155 +1,249 @@
+'use strict';
+
 /*
- 1. Напишите функцию которая принимает 2 числа
- и возвращает массив содержащий числа между первым числом и вторым числом;
+ 1. Переместите 0 в конец массива, остальные числа должны остаться
+ неизменными
+ .сoncat();
+ example:
+ [1,false,2,0,3,null,0,4,0,25] => [1, false, 2, 3, null, 4, 25, 0, 0, 0]
+ [ 'a', 0, 0, 'b', null, 'c', 'd', 0, 1, false, 0, 1, 0, 3, [], 0, 1, 9, 0, 0, {}, 0, 0, 9 ] => ["a","b",null,"c","d",1,false,1,3,[],1,9,{},9,0,0,0,0,0,0,0,0,0,0]
+ [ 0, 1, null, 2, false, 1, 0 ] => [1,null,2,false,1,0,0]
  */
 
-function numbersBetween(a, b) {
-    let betweenArray = [];
+let arr1 = [1, false, 2, 0, 3, null, 0, 4, 0, 25];
 
-    for (let i = a + 1; i < b; i++) {
-        betweenArray.push(i);
+function moveZeroToEnd(arr) {
+  // перебираем массив в цикле
+  // если не ноль добавляем в notZeroArray
+  // если ноль добавляем в zeroArray
+  // объединяем массивы
+  let notZeroArray = [], zeroArray = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    let elem = arr[i];
+
+    if (elem !== 0) {
+      notZeroArray.push(elem);
+    }
+    else {
+      zeroArray.push(elem);
     }
 
-    return betweenArray;
+  }
+  return notZeroArray.concat(zeroArray)
 
 }
-
-console.log(numbersBetween(1, 5)); // 2,3,4
-console.log(numbersBetween(3, 6)); // 4,5
-console.log(numbersBetween(12, 15)); // 13,14
-console.log(numbersBetween(10, 15)); // 11, 12, 13, 14
+// console.log(moveZeroToEnd(arr1));
 
 /*
- 2. Перепешите задачу FizzBuzz, но с использованием цикла.
- Расчет чисел должен идти до 100
+ 2. Верните сумму двух найменьших чисел в массиве
+
+ [10,20,30,1,31,11,10] => 11
+ [-1,0,25] => -1
+ [-4,-10,25,10] => -14
+ [0,200,10,25,15] => 10
+
  */
-function fizzBuzzArray(num) {
-    let numArray = [];
+
+let numArray = [10, 20, 30, 1, 31, 11, 10];
+let numArray2 = [-1, 0, 25];
+let numArray3 = [-4, -10, 25, 10];
+let numArray4 = [0, 200, 10, 25, 15];
 
 
-    for (let i = 0; i < num; i++) {
-        numArray.push(i);
-        let itemArray = numArray[i];
+function minimalNumbers2(arr) {
+  arr.sort(function (a, b) {
+    return a - b;
+  });
 
-        if (itemArray % 3 === 0 && itemArray % 5 === 0) {
-            console.log('FizzBuzz');
-        }
-        else if (itemArray % 3 === 0) {
-            console.log('Fizz');
-        }
-        else if (itemArray % 5 === 0) {
-            console.log('Buzz');
+  return arr[0] + arr[1];
+}
+
+// console.log(minimalNumbers2(numArray4));
+
+// function findMin(arr) {
+//   var min = arr[0];
+//   for (var i = 0; i < arr.length; i++) {
+//     if (min > arr[i]) {
+//       min = arr[i];
+//     }
+//   }
+//   return min;
+// }
+
+
+/*
+ 3. Напишите функцию которая меняет местами имя и фамилию
+ nameShuffler('john McClane'); => "McClane john"
+ nameShuffler('Arnold Schwarzenegger'); => "Schwarzenegger Arnold"
+ nameShuffler('James Bond'); => "Bond James"
+ */
+
+function nameShuffler(str) {
+  // делаем из строки массив
+  // разворачиваем его
+  // делаем из массива строку
+
+  let newStr = str.split(" ").reverse().join(' ');
+
+  return newStr;
+}
+// console.log(nameShuffler("john McClane"));
+
+/*
+ // !
+ 4. Напишите функцию которая принимает массив с именами и возвращает массив
+ в котором каждая буква становится заглавной
+ capMe(['jo', 'nelson', 'jurie'])     // returns ['Jo', 'Nelson', 'Jurie']
+ capMe(['KARLY', 'DANIEL', 'KELSEY']) // returns ['Karly', 'Daniel', 'Kelsey']
+ */
+
+function capMe(arr) {
+  // создаем новый массив
+  // делаем в цикле элементы массива строками
+  // берем первый элемент строки приводим к верхнему рег-ру
+  // берем оставщуюся часть строки приводим к нижнему
+  // склеиваем части строки
+  // добавляем строки в новый массив
+
+  let newArrqy = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    let elem = arr[i];
+
+    elem = elem[0].toUpperCase() + elem.slice(1).toLowerCase();
+    newArrqy.push(elem);
+
+  }
+
+  return newArrqy;
+}
+
+// console.log(capMe(['KARLY', 'DANIEL', 'KELSEY']));
+
+//@SUPER
+/*
+ 1. Найдите число отсутствующее в заданной последовательности
+
+ example:
+ */
+var supArr1 = [1, 3, 5, 9];// => 7
+var supArr2 = [0, 8, 16, 32];// => 24
+var supArr3 = [4, 6, 8, 10];// => 2 // число сначала
+var supArr4 = [0, 16, 24, 32];// => 8
+var supArr5 = [0, 24, 72, 96];//48
+var supArr6 = [3,6,9,12];//3
+var supArr7 = [1, 3, 5, 7, 9];// => 7
+
+
+/**/
+// сравниваем разницу между первым и вторым, вторым- третьим
+// ноходим число с наибольшей разницей
+
+//первый должен быть меньше следуещего на x
+//текущий должен быть меньше следующего и больше предыдущего на x
+//последний должен быть больше предыдущего на x
+
+// цикл от первого до предпоследнего индекса
+// сравниваем разницу между (следующий - текущий) и (текущий - предыдущий)
+// если есть
+// ищем большую разность
+// если разница (следующий - текущий) больше разницы (текущий - предыдущий)
+// недостающее число - следующий минус разница(текущий минус предыдущий)
+// если разница (текущий - предыдущий)
+// недостающее число -
+
+var newArr2 = [];
+
+findNum(supArr1);
+findNum(supArr2);
+findNum(supArr3);
+findNum(supArr4);
+findNum(supArr5);
+findNum(supArr6);
+findNum(supArr7);
+
+
+function findNum(arr) {
+
+  for (var i = arr.length - 2; i >= 0; i--) {
+    var elem = arr[i];
+    var nextElem = arr[i + 1];
+    var prevElem = arr[i - 1];
+
+    if (i != 0 || i > 0) {
+      if ((nextElem - elem) !== (elem - prevElem)) {
+
+        if ((nextElem - elem) > (elem - prevElem)) {
+          return console.log( 'missing number is -', nextElem - (elem - prevElem));
         }
         else {
-            console.log(itemArray);
+          return console.log( 'missing number is -', ((nextElem - elem) + prevElem));
         }
+      }
+      else {
+        // return console.log("missing number isn't");
+      }
     }
+    else{
+      return console.log( 'missing number is -', (nextElem - elem));
+    }
+  }
+
 }
 
-function fizzBuzz(num) {
+// if(arr[1] - arr[0]  arr[arr.length - 1] arr[arr] )
 
-    for (let i = 0; i < num; i++) {
-        let item = i;
-
-        if (item % 3 === 0 && item % 5 === 0) {
-            console.log('FizzBuzz');
-        }
-        else if (item % 3 === 0) {
-            console.log('Fizz');
-        }
-        else if (item % 5 === 0) {
-            console.log('Buzz');
-        }
-        else {
-            console.log(item);
-        }
-    }
+function random(arr) {
 }
 
-fizzBuzz(100);
+random([1, 3, 5, 9]);
+random([0, 8, 16, 32]);
+random([0, 16, 24, 32]);
+random([4, 6, 8, 10]);
 
 /*
- 3. Напишите функцию которая принимает 1 аргумент - массив
- И возвращает новый массив содержащий типы значений переменных
+ 2. Напишите функция которая преобразовывает/открывает скобки всех
+ вложенных внутри массивов
+ Необходимо реализовать рекурсивный фызов функции.
+ Функция должна открывать любое количество внутренних массивов
+
+ example:
+ [ [1, 2] , [ 3, [ 4 ] ], 5, 10 ] => [1,2,3,4,5,10]
+ [25,10,[10,[15]]] => [25,10,10,15]
+
  */
 
-let arr = [1, null, undefined, 'str', {}, [], function () {
-}];
+let superArr = [25, 10, [10, [15]], 6];
+let newArr = [];
 
-function showType(data) {
-    let newData = [];
+// создаем новый массив
+// проходимся циклом по массиву
+// если индекс - число - пушим в новый массив
+// если индекс - массив - запускаем рекурсию - передаем элемент-массив
+// возвращаем новый массив
 
+function joinArray(arr) {
 
-    for (let i = 0; i < data.length; i++) {
-        let elem = typeof data[i];
+  for (let i = 0; i < arr.length; i++) {
+    let elem = arr[i];
 
-        newData.push(elem);
+    if (Array.isArray(elem)) {
+
+      joinArray(elem);
+
+    }
+    else {
+      newArr.push(elem);
     }
 
-    console.log(newData);
-
+  }
+  return newArr;
 }
 
-showType(arr);
-
-/*
- @@SUPER@@. Вам дан массив array, содержащий внутри объекты.
- Напишите функцию которая внутри цикла проходится по каждому элементу массива
- И проверяет какой тип данных содержит свойство age, если тип данных NaN,
- тогда добавляет данному объекту свойство unknownAge: true
-
- На основании нового массива, создайте новую функцию, которая вернет новый массив
- содержащий все объекты содержащие свойство unknownAge:true
- */
-
-let array = Array.from({length: 35}).map(
-    (value, index) => (index % 2 ? {age: index + 2} : {age: NaN})
-);
+// console.log(joinArray(superArr));
 
 
-//console.log(array); // [ {age:NaN}, {age:3}, {age:NaN}, {age:5}, {age:NaN}, {age:7} ....]
-//console.log(array.length); // 35
-
-function solution(paramArray) {
-    let newAgeArray = [];
-
-
-    for (let i = 0; i < paramArray.length; i++) {
-        let item = paramArray[i];
-
-        if ('age' in item) {
-
-            if (isNaN(item.age)) {
-                item.unknownAge = true;
-            }
-            newAgeArray.push(item);
-
-        }
-    }
-
-    return newAgeArray;
-
-}
-
-
-let newAgeArray = solution(array);
-
-function returnArr(paramArray) {
-    let unknowsArray = [];
-
-    for (let i = 0; i < paramArray.length; i++) {
-        let unknowsArrayItem = paramArray[i];
-
-
-        if (unknowsArrayItem.unknownAge === true) {
-            unknowsArray.push(unknowsArrayItem);
-        }
-    }
-
-    return unknowsArray;
-}
-
-console.log(returnArr(newAgeArray));
 
 
 

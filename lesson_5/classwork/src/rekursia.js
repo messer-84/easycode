@@ -5,4 +5,4 @@ function sum(number) {
     return sum(number -1) + number;
 }
 
-console.log(sum(5));
+console.log(sum(5));//15
