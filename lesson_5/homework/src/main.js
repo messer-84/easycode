@@ -141,7 +141,7 @@ console.log('task - 4 ', capMe(['KARLY', 'DANIEL', 'KELSEY']));
  1. Найдите число отсутствующее в заданной последовательности
  example:
  */
-var supArr1 = [1, 3, 5, 9];// => 7
+var supArr1 = [1, 3, 5, 9];// => 7  //(9-1)/4
 var supArr2 = [0, 8, 16, 32];// => 24
 var supArr3 = [4, 6, 8, 10];// => 2 // число сначала
 var supArr4 = [0, 16, 24, 32];// => 8
@@ -187,6 +187,7 @@ function findNum(arr) {
   }
 
 }
+
 console.log('task - super - 1 ', findNum(supArr2));
 
 
@@ -207,12 +208,17 @@ console.log('task - super - 1 ', findNum(supArr2));
 // если индекс - массив - запускаем рекурсию - передаем элемент-массив
 // возвращаем новый массив
 
-let superArr = [25, 10, [10, [15]], 6];
+let superArr = [25, 12, [10, [15]], 6];
 let newArr = [];
+
+
+// если массив - вырезать
+
 
 function joinArray(arr) {
 
   for (let i = 0; i < arr.length; i++) {
+
     let elem = arr[i];
 
     if (Array.isArray(elem)) {
@@ -221,15 +227,23 @@ function joinArray(arr) {
 
     }
     else {
-      newArr.push(elem);
-    }
+      // arr.shift();
+      // arr.push(elem);
 
+      console.log('elem',elem);
+
+
+    }
+    //
   }
-  return newArr;
+  return arr;
+  // return newArr;
+
 }
 
 console.log('task - super - 2', joinArray(superArr));
 
+// если массив  10, 15
 
 
 
