@@ -95,17 +95,21 @@ let javaScript = {
 
 
 function countLetterA(data) {
-  var counter = 0;
+  // var counter = 0;
+  //
+  // data = data.split('');
+  //
+  // data.forEach(function (elem, index, arr) {
+  //   if (elem === 'a') {
+  //     counter++;
+  //   }
+  // });
+  //
+  // return counter;
 
-  data = data.split('');
-
-  data.forEach(function (elem, index, arr) {
-    if (elem === 'a') {
-      counter++;
-    }
-  });
-
-  return counter;
+  return data.split('').filter(function (elem) {
+      return
+  })
 
 }
 
@@ -232,9 +236,9 @@ console.log(wordCounter('url http url www url http'));
 
 function createHashTags(arr) {
   var obj = {};
-  arr.map(function (elem, index, arr) {
+  arr.forEach(function (elem, index, arr) {
 
-    obj[elem['_id']] = elem['company']
+    obj[elem._id] = elem.company;
 
   });
   return obj;
