@@ -99,7 +99,7 @@ function countLetterA(data) {
 
   data = data.split('');
 
-  data.map(function (elem, index, arr) {
+  data.forEach(function (elem, index, arr) {
     if (elem === 'a') {
       counter++;
     }
@@ -196,7 +196,7 @@ console.log('Task 3 - ', reverseEachWord2('The Document Object Model (DOM) is a 
 function wordCounter(sentence) {
   var newArray = sentence.split(' ');
   var obj = {}
-  newArray.map(function (elem, index, arr) {
+  newArray.forEach(function (elem, index, arr) {
 
     obj[elem] ? obj[elem] += 1 : obj[elem] = 1
 
@@ -251,30 +251,25 @@ console.log('task - 5 ', createHashTags(listOfCompanys));
  *
  * */
 
+var notUniqArray = [1, 1, 2, 2, 2, 5, 10, 25, 30, 5, 1, 0, 22, 3, 10, 3];
+
 function uniqueElements(arr) {
-  //создаем новый массив
-  //проходимся по старому массиву
-  //проверяем если в новом массиве нет текущего элемента старого массива
-  // добавляем его
-  // возвращаем новый массив
-  //
-  var megaArr = [];
+  var uniqueArr = arr.filter(function (elem, index, arr) {
+    //возвращаем только те элементы массива у которых первый индекс
+    //вхождения соответствует фактическому индексу
+    //(если не соответствует - значит это дубль)
 
-  arr.map(function (elem, index, arr) {
-
-    if(megaArr.indexOf(elem) == -1 ){
-      megaArr.push(elem);
-    }
+    return arr.indexOf(elem) === index;
 
   });
-
-  return megaArr;
-
+  return uniqueArr;
 }
 
-let notUniqArray = [1, 1, 2, 2, 2, 5, 10, 25, 30, 5, 1, 0, 22, 3, 10, 3];
+
+
+console.log("task - super - 1 ", uniqueElements(notUniqArray));
 //
-console.log('task - super - 1 ', uniqueElements(notUniqArray)); //1,2,5,10,25,30,0,22,3,
+//console.log('task - super - 1 ', uniqueElements(notUniqArray)); //1,2,5,10,25,30,0,22,3,
 // console.log(uniqueElements([1, 1, 2, 3, 3])); // 1,2,3
 
 
