@@ -37,13 +37,21 @@ console.log(add(10)(5)(15)); // 30
 console.log('Task 2 >>>>>>>>>>>>>>>>>>>>>>>>>');
 
 function patternModule() {
+  const counter = (function () {
+    let i = 0;
+    return function (num) {
+
+      return num !== undefined ? i = num : ++i;
+
+    }
+  })();
+
   return {
-    counterData: 1,
     add: function () {
-      return console.log(this.counterData++);
+      return console.log('add ', counter());
     },
     clear: function () {
-      return this.counterData = 1;
+      return counter(0);
     }
   }
 }
@@ -55,7 +63,6 @@ test.add(); //2
 test.add(); //3
 test.clear();
 test.add();//1
-
 
 // @SUPER
 
@@ -82,14 +89,14 @@ function methodCounter(obj, method, num, fn) {
 
   obj[method] = function (params) {
     i++;
-    if(i < num + 1){
+    if (i < num + 1) {
       var arr = [];
-      for(var k = 0; k < arguments.length; k++){
+      for (var k = 0; k < arguments.length; k++) {
         arr.push(arguments[k]);
       }
       fn(arr);
     }
-    else{
+    else {
       console.log('ERROR ! add more methods');
 
     }
@@ -105,9 +112,9 @@ methodCounter(jun, 'logger', 2, function (args) {
 });
 
 
-jun.logger(2,3,4,5);//14
-jun.logger(5,5);//10
-jun.logger(3,3);//errar
+jun.logger(2, 3, 4, 5);//14
+jun.logger(5, 5);//10
+jun.logger(3, 3);//errar
 
 
 
