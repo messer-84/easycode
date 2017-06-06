@@ -9,6 +9,7 @@
  *
  *
  * */
+console.log('Task 1 >>>>>>>>>>>>>>>>>>>>>>>>>');
 
 function add(a) {
   return function (b) {
@@ -17,8 +18,8 @@ function add(a) {
     }
   }
 }
-// console.log(add(1)(2)(3)); // 6
-// console.log(add(10)(5)(15)); // 30
+console.log(add(1)(2)(3)); // 6
+console.log(add(10)(5)(15)); // 30
 
 /*
  *
@@ -33,6 +34,7 @@ function add(a) {
  * Узнать счетчик напрямую в объекте, нельзя
  *
  * */
+console.log('Task 2 >>>>>>>>>>>>>>>>>>>>>>>>>');
 
 function patternModule() {
   return {
@@ -47,15 +49,12 @@ function patternModule() {
 }
 
 let test = patternModule(); // 0
-// test.counter();
-// test.clear();
 
-
-// test.add(); //1
-// test.add(); //2
-// test.add(); //3
-// test.clear();
-// test.add();//1
+test.add(); //1
+test.add(); //2
+test.add(); //3
+test.clear();
+test.add();//1
 
 
 // @SUPER
@@ -74,6 +73,7 @@ let test = patternModule(); // 0
  *  Когда заканчивается счетчик, отображается ошибка
  *
  * */
+console.log('Super task >>>>>>>>>>>>>>>>>>>>>>>>>');
 
 let jun = {};
 
@@ -108,7 +108,6 @@ methodCounter(jun, 'logger', 2, function (args) {
 jun.logger(2,3,4,5);//14
 jun.logger(5,5);//10
 jun.logger(3,3);//errar
-jun.logger(2,2);
 
 
 
