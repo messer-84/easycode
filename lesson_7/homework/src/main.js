@@ -40,9 +40,7 @@ function patternModule() {
   const counter = (function () {
     let i = 0;
     return function (num) {
-
       return num !== undefined ? i = num : ++i;
-
     }
   })();
 
