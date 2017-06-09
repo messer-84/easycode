@@ -105,31 +105,31 @@
 
 /*------------------------*/
 
-// function test() {
-//   var name = 'Vasiliy';
-//   return getBigName(userName);
-// }
-//
-// function getBigName(name) {
-//   name = name + '';
-//   return name.toUpperCase();
-// }
-//
-// var userName = 'Ivan';
-//
-// test(); // IVAN
+function test() {
+  var name = 'Vasiliy';
+  return getBigName(userName);
+}
+
+function getBigName(name) {
+  name = name + '';
+  return name.toUpperCase();
+}
+
+var userName = 'Ivan';
+
+test(); // IVAN
 // если функцию перенести вверх - UNDEFINED
 /*---------------------------------*/
-// var food = 'cucumber';
-//
-// (function () {
-//   var food ='bread';
-//   getFood();
-// })();
-//
-// function getFood() {
-//   console.log(food);
-// }
+var food = 'cucumber';
+
+(function () {
+  var food ='bread';
+  getFood();
+})();
+
+function getFood() {
+  console.log(food);
+}
 //cucumber
 /*---------------------------------*/
 
@@ -278,6 +278,8 @@ var greet = 'Hello';
 })();
 
 console.log(greet + text);
+
+// замыкание хранится пока на него есть ссылка
 
 
 

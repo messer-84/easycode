@@ -84,7 +84,7 @@ let jun = {};
 
 function methodCounter(obj, method, num, fn) {
   var i = 0;
-
+  // obj[method] = function (...args) {
   obj[method] = function (params) {
     i++;
     if (i < num + 1) {
