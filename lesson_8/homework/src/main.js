@@ -59,7 +59,8 @@ function validBraces(str) {
     }
     var indexOpen = arr.indexOf(elemOpen);
     var indexClose = arr.indexOf(elemClose);
-
+    console.log('indOpen',elemOpen, indexOpen);
+    console.log('indClose',elemClose, indexClose);
     // 1 - у открывающейся скобочки есть пара
     if (arr.indexOf(elemOpen) !== -1 && arr.indexOf(elemClose) !== -1) {
 
@@ -84,23 +85,28 @@ function validBraces(str) {
           continue;
 
         }
+
         console.log(str, '1 false');
         return false;
       }
     }
     else {
-      console.log(str, '1 false');
-      return false;
+      if (i == bracketsArr.length - 1) {
+        console.log(str, '2 false');
+        return false;
+      }
+      continue;
     }
   }
 
-
 }
 
-validBraces('(){}[]'); //=> returns true
-validBraces('(}'); //=> returns false
+// validBraces('(){}[]'); //=> returns true
+// validBraces('(}'); //=> returns false
 validBraces('[(])'); // => returns false
-validBraces('([{}])'); //=> returns true
+// validBraces('([{}])'); //=> returns true
+// validBraces('(){}')
+
 
 /*
  *
