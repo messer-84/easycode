@@ -142,7 +142,16 @@ function makeCallback(fn) {
  * */
 console.log('Super Task  >>>>>>>>>>>>>>>>>>>>>>>>>>');
 
-function sum(num) {}
+function sum(num) {
+  var sumAll = 0;
+  for (var i = 0;i <= num; i++){
+    var elem = i;
+    sumAll += elem;
+  }
+  console.log(sumAll);
+
+
+}
 
 sum(5); // 15 Значение кешировано
 sum(5); // 15 Значение взято из кэша
