@@ -167,7 +167,7 @@ function $(tag, text) {
 };
 
 $('body').add('li', 'hi').add('span').render();
-//
+// $('body'); так не работает
 
 
 
