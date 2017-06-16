@@ -234,16 +234,9 @@ console.log('subtask hw5-4', capMe(['KARLY', 'DANIEL', 'KELSEY']));
 
 let junior = {};
 
-// fn.length == arguments.length
-
 function addMethod(object, name, fn) {
 
-  console.log('fnLen', fn.length);
-
-
   object[name] = function(params) {
-
-    console.log('metLen', arguments.length);
 
     if (fn.length === arguments.length) {
       fn(params);
@@ -253,24 +246,24 @@ function addMethod(object, name, fn) {
 
 }
 
-// addMethod(junior, 'ok', function () {
-//   console.log('zero arguments');
-// });
+addMethod(junior, 'ok', function () {
+  console.log('zero arguments');
+});
 
-// addMethod(junior, 'ok', function(one) {
-//   console.log('one arguments');
-// });
+addMethod(junior, 'ok', function(one) {
+  console.log('one arguments');
+});
 addMethod(junior, 'ok', function (one, two) {
   console.log('two arguments');
 });
-// addMethod(junior, 'ok', function (one, two, three) {
-//   console.log('three arguments');
-// });
-//
-// junior.ok(); //'zero arguments'
-// junior.ok(1); //'one arguments'
+addMethod(junior, 'ok', function (one, two, three) {
+  console.log('three arguments');
+});
+
+junior.ok(); //'zero arguments'
+junior.ok(1); //'one arguments'
 junior.ok(1, 2); // 'two arguments'
-// junior.ok(1, 2, 3); // 'three arguments'
+junior.ok(1, 2, 3); // 'three arguments'
 
 
 
