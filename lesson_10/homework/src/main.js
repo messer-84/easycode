@@ -37,14 +37,14 @@ z(x);
  *
  * */
 
-// let $ = function (tag) {
-//   return `<${tag}></${tag}>`;
-// };
-//
-// let createBODY = $('body');
-// let createDIV = $('div');
-// console.log(createBODY); // <body></body>
-// console.log(createDIV); // <div></div>
+let $ = function (tag) {
+  return `<${tag}></${tag}>`;
+};
+
+let createBODY = $('body');
+let createDIV = $('div');
+console.log(createBODY); // <body></body>
+console.log(createDIV); // <div></div>
 
 /*
  *
@@ -57,18 +57,18 @@ z(x);
  *  Передаваемые аргументы должны быть только в виде строки
  * */
 
-// var ezjQuery = {
-//   myStr: "",
-//   add: function (tag) {
-//     this.myStr += `<${tag}></${tag}>`;
-//     console.log(this.myStr);
-//     return this;
-//   }
-// };
-// ezjQuery
-//     .add('body') //<body></body>
-//     .add('div') //<body></body><div></div>
-//     .add('h1'); //<body></body><div></div><h1></h1>
+var ezjQuery = {
+  myStr: "",
+  add: function (tag) {
+    this.myStr += `<${tag}></${tag}>`;
+    console.log(this.myStr);
+    return this;
+  }
+};
+ezjQuery
+    .add('body') //<body></body>
+    .add('div') //<body></body><div></div>
+    .add('h1'); //<body></body><div></div><h1></h1>
 
 /*
  *
