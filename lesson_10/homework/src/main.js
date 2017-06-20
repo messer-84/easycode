@@ -37,14 +37,14 @@ z(x);
  *
  * */
 
-let $ = function (tag) {
-  return `<${tag}></${tag}>`;
-};
+// let $ = function (tag) {
+//   return `<${tag}></${tag}>`;
+// };
 
-let createBODY = $('body');
-let createDIV = $('div');
-console.log(createBODY); // <body></body>
-console.log(createDIV); // <div></div>
+// let createBODY = $('body');
+// let createDIV = $('div');
+// console.log(createBODY); // <body></body>
+// console.log(createDIV); // <div></div>
 
 /*
  *
@@ -61,7 +61,6 @@ var ezjQuery = {
   myStr: "",
   add: function (tag) {
     this.myStr += `<${tag}></${tag}>`;
-    console.log(this.myStr);
     return this;
   }
 };
@@ -127,47 +126,32 @@ var bodyDiv = ezjQuery2
 console.log('bodyDiv', bodyDiv); //<body><div></div></body>
 document.write(helloList);
 
-function $(tag, text) {
-  function FirstMet(myTag) {
-    this.getTag = function (myTag) {
-      console.log(`<${tag}>${text = text || ""}</${tag}>`);
-    }
-  };
-  var superF = new FirstMet(tag);
 
-  function AllMethods() {
-    this.myStr = `<${tag}>${text = text || ""}</${tag}>`;
-    this.add = function (tag, text) {
-      text = text || "";
-      if (this.myStr == "") {
-        this.myStr += `<${tag}>${text}</${tag}>`;
-      }
-      else {
-        let indexEnd = this.myStr.indexOf('</');
-        let startStr = this.myStr.slice(0, indexEnd);
-        let endStr = this.myStr.slice(indexEnd);
-        this.myStr = `${startStr}<${tag}>${text}</${tag}>${endStr}`;
-      }
+function $(tagMain, contentMain = '') {
+  return {
+    tags: [{ tagName: tagMain, content: contentMain }],
+    add(tagName, content = ''){
+      //this.tags.push({tagName: tagName, content: content});
+      this.tags.push({ tagName, content });
+
       return this;
-    };
-    this.render = function () {
-      console.log(this.myStr);
-      this.myStr = '';
-    };
-  }
+    },
+    render(){
+      const beginArr = [];
+      const endArr =[];
+      this.tags.forEach((tag) => {
+        beginArr.push(`<${tag.tagName}>${tag.content}`);
+        endArr.unshift(`</${tag.tagName}>`);
+      });
+      this.tags = [];
 
-  var allMethods = new AllMethods();
-  if (tag == undefined) {
-    return superF.getTag();
+      return console.log(beginArr.concat(endArr).join(''));
+    }
   }
-  else {
-    return allMethods;
-  }
+}
 
-};
-
-$('body').add('li', 'hi').add('span').render();
-// $('body'); так не работает
+// $('body').add('div').add('span', 'hi').render();
+//$('body').render();
 
 
 
