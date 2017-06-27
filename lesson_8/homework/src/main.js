@@ -119,18 +119,20 @@ validBraces('[(])'); // => returns false
  * */
 console.log('Task 3 >>>>>>>>>>>>>>>>>>>>>>>>>>');
 
-
 function makeCallback(fn) {
   for (let i = 1; i <= 10; i++) {
     setTimeout(function() {
       console.log(i);
+      if (i === 10) {
+        fn();
+      }
     }, i * 1000);
   }
 }
 
-// makeCallback(function() {
-//   console.log('THE LAST LAST comment');
-// });
+makeCallback(function() {
+  console.log('THE LAST LAST comment');
+});
 
 
 // @SUPER
