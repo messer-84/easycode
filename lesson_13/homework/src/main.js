@@ -155,7 +155,7 @@ let startTimer = () => {
 // setTimeout(func,900);
 // setTimeout(func,3150);
 
-// startTimer();
+startTimer();
 // @ SUPER
 
 /*
@@ -173,24 +173,35 @@ let startTimer = () => {
 
 class DataBase {
   constructor() {
-
+    this.timerInterval = 5000;
+    let counter = 5;
   }
 
   query() {
-    var i = 5;
-    var timer;
-    (function timerDown() {
-      if (i == 0) {
-        console.log('off');
-        clearTimeout(timer);
-      }
-      else {
-        console.log(i);
-        timer = setTimeout(timerDown, 1000);
-      }
-      i--;
-    })();
+    if (this.timer) {
+      clearTimeout(this.timer);
+      clearInterval(this.interval)
+    }
+    this.interval = setInterval(() => {
 
+        }
+    )
+    this.timer = setTimeout()
+
+
+    // var i = 5;
+    // var timer;
+    // (function timerDown() {
+    //     if (i == 0) {
+    //         console.log('off');
+    //         clearTimeout(timer);
+    //     }
+    //     else {
+    //         console.log(i);
+    //         timer = setTimeout(timerDown, 1000);
+    //     }
+    //     i--;
+    // })();
 
 
   }

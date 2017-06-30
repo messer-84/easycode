@@ -1,0 +1,55 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family:Arial, sans-serif;
+}
+h1{
+    margin:0 0 20px;
+    text-align: center;
+}
+
+h2 {
+    margin: 0 0 15px;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+body {
+    position: relative;
+    padding: 50px 0 0;
+    width: 600px;
+    margin: 0 auto;
+}
+ol{
+    margin:0 0 30px;
+}
+ul {
+    list-style: none;
+    margin: 0 0 20px;
+
+}
+
+ul li {
+    margin: 0 0 6px;
+}
+label{
+    position: relative;
+    display: inline-block;
+    padding:0 0 0 18px;
+}
+input{
+    position: absolute;
+    left: 0;
+    top: 2px;
+    margin:0 4px 0 0;
+}
+button{
+    position: relative;
+    width: 290px;
+    display: block;
+    border:1px solid #444;
+    padding:10px 40px;
+    cursor: pointer;
+    margin: 0 auto;
+    font-size: 16px;
+}
