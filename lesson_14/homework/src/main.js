@@ -71,7 +71,7 @@ function replaceSubString(str, homeDir, appDir, appName) {
 
 replaceSubString(someWebpackModule, './JavaScript-Basic', 'fixtures/src', 'app.js');
 
-// Task 2 в файле task2.html
+// Task 2 в файле - https://github.com/messer-84/easycode/blob/master/lesson_14/homework/task2.html
 
 console.log('Task 3 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
 class CreateHtml {
