@@ -1,0 +1,22 @@
+ul{
+    list-style: none;
+}
+
+
+li{
+    position: relative;
+    margin: 0 0 20px;
+    width: 300px;
+    padding:10px;
+    border:1px solid #444;
+    font-size: 18px;
+    font-weight: 700;
+    color: blue;
+    left: 0;
+    background: #fff;
+transition: all .7s ease;
+}
+li:hover{
+    background: yellow;
+    left:40px;
+}

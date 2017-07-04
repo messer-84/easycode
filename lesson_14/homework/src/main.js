@@ -7,33 +7,37 @@
  solution([2, 2, 44, 44]) => []
  */
 
-let solution = (arr) => {
-    //найти количество совпадений
-    // если длина массива делится на 2 с остатком
-    // добавить в новый массив
+const solution = arr => arr.filter(number => {
+    return arr.filter(elem => elem === number).length % 2;
+}).filter((elem, index, arr) => arr.indexOf(elem) === index);
 
-    let str = arr.join(',');
-    let arrUniq = [];
+// let solution = (arr) => {
+//     //найти количество совпадений
+//     // если длина массива делится на 2 с остатком
+//     // добавить в новый массив
+//
+//     let str = arr.join(',');
+//     let arrUniq = [];
+//
+//     arr.forEach(elem => {
+//         let re = new RegExp('\\b' + elem + '\\b', 'g');
+//         let arrSame = str.match(re);
+//
+//         if (arrSame.length % 2 > 0) {
+//             if (arrUniq.indexOf(arrSame[0]) == -1) {
+//                 arrUniq.push(arrSame[0]);
+//             }
+//         }
+//     });
+//
+//     console.log(arrUniq);
+// };
 
-    arr.forEach(elem => {
-        let re = new RegExp('\\b' + elem + '\\b', 'g');
-        let arrSame = str.match(re);
-
-        if (arrSame.length % 2 > 0) {
-            if (arrUniq.indexOf(arrSame[0]) == -1) {
-                arrUniq.push(arrSame[0]);
-            }
-        }
-    });
-
-    console.log(arrUniq);
-};
-
-solution([12, 23, 34, 12, 12, 23, 12, 45]);//34-45
-solution([4, 4, 100, 5000, 4, 4, 4, 4, 4, 100, 100]);//4-100-5000
-solution([3, 3, 4, 6, 4, 5, 9, 9, 21, 9]);//6-5-9-21
-solution([4, 8, 15, 16, 23, 42, 4, 15, 42, 42]);//8-16-23-42
-solution([2, 2, 44, 44]);
+console.log(solution([12, 23, 34, 12, 12, 23, 12, 45]));//34-45
+console.log(solution([4, 4, 100, 5000, 4, 4, 4, 4, 4, 100, 100]));//4-100-5000
+console.log(solution([3, 3, 4, 6, 4, 5, 9, 9, 21, 9]));//6-5-9-21
+console.log(solution([4, 8, 15, 16, 23, 42, 4, 15, 42, 42]));//8-16-23-42
+console.log(solution([2, 2, 44, 44]));
 
 console.log('Task 1 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
 const someWebpackModule = `module.exports = {
@@ -108,10 +112,11 @@ class CreateHtml {
     appendTag(parent, elem) {
         parent.appendChild(elem);
     }
-    addElement(options){
+
+    addElement(options) {
         var myTag = document.createElement(options.tag);
         options.parent.appendChild(myTag);
-        if(options.text){
+        if (options.text) {
             myTag.textContent = options.text;
         }
     }
@@ -154,7 +159,7 @@ class CreateHtml {
 let createHtml = new CreateHtml();
 
 
-createHtml.addElement({tag:'h1', text:'Tecт по программированию', parent: document.body});
+createHtml.addElement({tag: 'h1', text: 'Tecт по программированию', parent: document.body});
 
 let elemOL = createHtml.createTag('ol');
 
@@ -162,7 +167,7 @@ createHtml.appendTag(document.body, elemOL);
 
 createHtml.addList(elemOL);
 
-createHtml.addElement({tag:'button', text:'Проверить мои результаты', parent: document.body});
+createHtml.addElement({tag: 'button', text: 'Проверить мои результаты', parent: document.body});
 
 
 
