@@ -59,7 +59,6 @@ const joinFunc = arr => {
             newArr.push(elem);
         }
     }
-
 };
 
 

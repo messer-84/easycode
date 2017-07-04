@@ -30,7 +30,6 @@ ul {
 }
 
 ul li {
-    position: relative;
     margin: 0 0 6px;
 }
 label{
@@ -39,7 +38,6 @@ label{
     padding:0 0 0 18px;
 }
 input{
-    z-index: 5;
     position: absolute;
     left: 0;
     top: 2px;
@@ -54,8 +52,4 @@ button{
     cursor: pointer;
     margin: 0 auto;
     font-size: 16px;
-
-}
-button{
-    width: 400px;
 }
