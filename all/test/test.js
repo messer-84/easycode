@@ -1,61 +1,60 @@
-/*
- *
- * TASK 1
- * Напишите функцию которая принимает 3 аргумента:*
- *
- *  - объект к которому привязывается метод
- *  - Имя свойства с которым связывается метод
- *  - Объявление привязываемого метода( функция )
- *
- *
- *  Если количество аргументов у функции fn совпадает с переданными
- *  параметрами тогда сохраняет метод в замыкании
- *  и привязывает функцию к методу объекта
- *
- *  при вызове одного и того же метода с разным количеством аргументов,
- *  должно давать различный результат
- *
- * */
+$(function () {
+    var btn = $('button');
+    var findCls = $('.contact_field.gfield_contains_required');
+    var textareaOne = findCls.find('textarea').eq(0);
+    var inputOne = findCls.find('input').eq(0);
+    var inputTwo = findCls.find('input').eq(1);
 
-let junior = {};
+    global(inputOne, inputTwo, textareaOne);
+    global(inputTwo, inputOne, textareaOne);
+    global(textareaOne, inputOne, inputTwo);
 
-// fn.length == arguments.length
+    function global(elem, fieldOne, fieldTwo) {
+        elem.on('keyup', function () {
+            checkFields(elem, fieldOne, fieldTwo);
+        });
+        elem.on('blur', function () {
+            checkFields(elem, fieldOne, fieldTwo);
+        });
+    }
 
-function addMethod(object, name, fn) {
+    function checkFields(elem, fieldOne, fieldTwo) {
+        var fieldsOneValue = $(fieldOne).val();
+        var fieldsTwoValue = $(fieldTwo).val();
 
-    let method = object[name];
-
-    object[name] = function () {
-        if(fn.length === arguments.length){
-            fn.apply(this, arguments);
-        }else if(typeof  method === 'function'){
-            method.apply(this, arguments);
+        if (fieldsOneValue === '' || fieldsTwoValue === '' || elem.val() === '') {
+            btn.removeClass('notEmpty');
+        }
+        else {
+            btn.addClass('notEmpty');
         }
     }
 
-}
 
-addMethod(junior, 'ok', function () {
-  console.log('zero arguments');
+    $(window).on('load', checkNotEmpty());
+
+    function checkNotEmpty() {
+        var li = $('.contact_field');
+        var inputs = li.find('input');
+        var tArea = li.find('textarea').eq(0);
+
+        var inpArr = [].slice.call(inputs);
+
+        inpArr.forEach(function (elem) {
+            if ($(elem).val() !== '') {
+                notEmpty(elem);
+            }
+        });
+        if ($(tArea).val() !== '') {
+            notEmpty(tArea);
+        }
+
+
+        function notEmpty(objElem) {
+            $(objElem).closest('li').find('label').addClass('not_empty');
+        }
+
+    }
+
 });
-
-addMethod(junior, 'ok', function(one) {
-  console.log('one arguments');
-});
-addMethod(junior, 'ok', function (one, two) {
-    console.log('two arguments');
-});
-addMethod(junior, 'ok', function (one, two, three) {
-  console.log('three arguments');
-});
-//
-junior.ok(); //'zero arguments'
-junior.ok(1); //'one arguments'
-junior.ok(1, 2); // 'two arguments'
-junior.ok(1, 2, 3); // 'three arguments'
-
-
-
-
-
 

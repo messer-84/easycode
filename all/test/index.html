@@ -5,7 +5,36 @@
 	<title>Title</title>
 	<script src="jquery-1.11.1.min.js"></script>
 	<script src="test.js"></script>
+	<style type="text/css">
+		button.notEmpty{
+			background: #000000;
+			color: #fff;
+			width: 200px;
+			height: 60px;
+		}
+		label.not_empty{
+			font-size: 28px;
+			font-weight: 700;
+		}
+	</style>
 </head>
 <body>
+<ul>
+	<li class="contact_field gfield_contains_required">
+		<label for="one">ONe label</label>
+		<input type="text" name="one" id="one" value=""></li>
+
+	<li class="contact_field gfield_contains_required">
+		<label for="one">two label</label>
+
+		<input type="text" name="one" id="two" value="t"></li>
+
+	<li class="contact_field gfield_contains_required">
+		<label for="one">textareeeeeeaaa</label>
+
+		<textarea name="ta" id="ta" cols="30" rows="10">ttew</textarea></li>
+	<li><button>Submit</button></li>
+
+</ul>
 </body>
 </html>
