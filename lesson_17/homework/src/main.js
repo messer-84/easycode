@@ -22,7 +22,7 @@ const solution = (arr) => {
       for (var k = index + 1; k < arr.length; k++) {
         var innerElem = arr[k];
 
-        if (elem < innerElem ) {
+        if (elem < innerElem) {
           checkItem = true;
           break;
         }
@@ -39,10 +39,18 @@ const solution = (arr) => {
   console.log(uniqArr);
 }
 
-solution([16, 17, 4, 3, 5, 2]) === [17, 5, 2]
-solution([4, 3, 7, 12, 6, 67, 5, 45, 34, 35, 2, 8]); // [67, 45, 35, 8]
-solution([12, 10, 12, 8, 7, 6]); // [12, 8, 7, 6]
-solution([1, 2, 3, 4, 5, 4]); // [5, 4]
+const solution = arr =>
+  arr.filter((elem, index) => {
+    return arr.slice(index + 1).every(nextElem => {
+      return nextElem < elem;
+    });
+  });
+
+
+console.log(solution([16, 17, 4, 3, 5, 2]))// === [17, 5, 2]
+console.log(solution([4, 3, 7, 12, 6, 67, 5, 45, 34, 35, 2, 8])); // [67, 45, 35, 8]
+console.log(solution([12, 10, 12, 8, 7, 6])); // [12, 8, 7, 6]
+console.log(solution([1, 2, 3, 4, 5, 4])); // [5, 4]
 
 
 /*
