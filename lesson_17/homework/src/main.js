@@ -10,20 +10,18 @@
 console.log('task 0 =========================');
 
 const solution = (arr) => {
-  //взять первый элемент
-  // в цикле сравнить его с теми кто идет после
-  // если он больше - оставить
-  // если есть больше - идем дальше
-
   var lidersArr = [];
+
   arr.forEach((elem, index) => {
     var checkItem = false;
+
     if (index === arr.length - 1) {
       lidersArr.push(elem);
     }
     else {
       for (var k = index + 1; k < arr.length; k++) {
         var innerElem = arr[k];
+
         if (elem < innerElem ) {
           checkItem = true;
           break;
