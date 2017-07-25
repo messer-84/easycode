@@ -1,5 +1,3 @@
-// const { name } = object;
-// const name = object.name;
 function Rabbit() {}
 /*--под капотом--*/
 // Rabbit.prototype = {
