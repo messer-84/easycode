@@ -5,6 +5,8 @@ class App {
     this.placeholderSearch = 'Search';
     this.theadData = options.theadData;
     this.userData = options.userData;
+    this.app = document.querySelector('.app');
+    
   }
 
   createTag(tag, parent, mClass) {
@@ -15,12 +17,6 @@ class App {
     }
     parent.appendChild(myTag);
     return myTag;
-  }
-
-  createHeader() {
-    const header = this.createTag('header', document.body, 'header');
-    const div = this.createTag('div', header, 'container top-radius');
-    div.innerHTML = `<h2>${this.pageName}</h2>`;
   }
 
   createSearchBlock(parent) {
@@ -61,10 +57,9 @@ class App {
   }
 
   createFooter() {
-    const footer = this.createTag('footer', document.body, 'footer');
+    const footer = this.createTag('footer', this.app, 'footer');
     const div = this.createTag('div', footer, 'container bottom-radius');
-    const nav = this.createNav(div);
-    footer.appendChild(nav);
+    this.createNav(div)
 
   }
 
@@ -97,9 +92,14 @@ class App {
     });
   }
 
-  render() {
-    const headerHtml = this.createHeader();
-    const mainHtml = this.createTag('main', document.body);
+  header() {
+    const header = this.createTag('header', this.app, 'header');
+    const div = this.createTag('div', header, 'container top-radius');
+    div.innerHTML = `<h2>${this.pageName}</h2>`;
+  }
+
+  main() {
+    const mainHtml = this.createTag('main', this.app);
     const div = this.createTag('div', mainHtml, 'container');
     const searchHtml = this.createSearchBlock(div);
     const table = this.createTag('table', div, 'table table-hover contacts');
@@ -107,13 +107,18 @@ class App {
     const theadData = this.createTR(thead, this.theadData, 'th');
     const tbody = this.createTag('tbody', table);
     const tbodyData = this.createTR(tbody, this.userData, 'td');
-    const footerHtml = this.createFooter();
+    this.createFooter();
+  }
+
+  render() {
+    this.header();
+    this.main();
 
   }
 }
 
 const app = new App({
-  pageName: 'App', navData: [
+  pageName: 'Contacts', navData: [
     {
       href: 'index.html',
       linkClass: 'tab',

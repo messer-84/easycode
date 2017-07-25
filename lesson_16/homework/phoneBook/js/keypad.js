@@ -3,6 +3,8 @@ class Keypad {
     this.pageName = options.pageName;
     this.navData = options.navData;
     this.arrayKeys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '*', '0', '#'];
+    this.app = document.querySelector('.app');
+
 
   }
 
@@ -16,37 +18,29 @@ class Keypad {
     return myTag;
   }
 
-  createHeader() {
-    const header = this.createTag('header', document.body, 'header');
-    const div = this.createTag('div', header, 'container top-radius');
-    div.insertAdjacentHTML('beforeEnd', `<h2>${this.pageName}</h2>`)
-  }
-
   createNav(parent) {
     const myNav = this.createTag('nav', parent, 'main-nav');
-    this.navData.forEach((elem, index) => {
-      let obj = this.navData[index];
-      let linkClassName = obj.linkActive ? 'tab active' : 'tab';
-      const linkContent =
-        `<a href="${obj.href}" class="${linkClassName}">
-          <span class="${obj.spanOneClass}" ${obj.spanOneAttr}=${obj.spanOneAttrValue}></span>
-          <span class="${obj.spanTwoClass}">${obj.linkText}</span>
-        </a>`;
-      myNav.insertAdjacentHTML('afterBegin', linkContent);
+    let navStr = '';
+    this.navData.forEach(elem => {
+      let linkClassName = elem.linkActive ? 'tab active' : 'tab';
+      navStr += `<a href="${elem.href}" class="${linkClassName}">
+        <span class="${elem.spanOneClass}" ${elem.spanOneAttr}=${elem.spanOneAttrValue}></span>
+        <span class="${elem.spanTwoClass}">${elem.linkText}</span>
+      </a> `;
     });
+    myNav.innerHTML = navStr;
     return myNav;
   }
 
   createFooter() {
-    const footer = this.createTag('footer', document.body, 'footer');
+    const footer = this.createTag('footer', this.app, 'footer');
     const div = this.createTag('div', footer, 'container bottom-radius');
-    const nav = this.createNav(div);
-    footer.appendChild(nav);
+    this.createNav(div)
   }
 
   createNumberHolder(parent) {
     const number = this.createTag('div', parent, 'number');
-    number.innerHTML = `<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><span class="numbers"></span><span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span>`;
+    number.innerHTML = `<span id="addUser">+user </span><span class="numbers"></span><span id="deleteNumber">del</span>`;
   }
 
   createKeypadData(parent) {
@@ -68,16 +62,23 @@ class Keypad {
     });
 
   }
-
-  render() {
-    const headerHtml = this.createHeader();
-    const mainHtml = this.createTag('main', document.body);
+  header() {
+    const header = this.createTag('header', this.app, 'header');
+    const div = this.createTag('div', header, 'container top-radius');
+    div.innerHTML = `<h2>${this.pageName}</h2>`;
+  }
+  main(){
+    const mainHtml = this.createTag('main', this.app);
     const div = this.createTag('div', mainHtml, 'container');
-    const numberHolder = this.createNumberHolder(mainHtml);
-    const keypadWrap = this.createTag('div', mainHtml, 'keypad-holder');
+    const numberHolder = this.createNumberHolder(div);
+    const keypadWrap = this.createTag('div', div, 'keypad-holder');
     const keypadData = this.createKeypadData(keypadWrap);
     const funcCallingInit = this.funcCalling('.key', '.numbers');
     const footerHtml = this.createFooter();
+  }
+  render() {
+    this.header();
+    this.main();
 
   }
 }
