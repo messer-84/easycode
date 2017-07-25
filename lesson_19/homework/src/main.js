@@ -1,92 +1,82 @@
-/*
- Алгоритмы !
- TASK 0
- Вам дано предложение, верните массив из слов,
- которые длинее чем средняя длина всех слов.
- Слова разделены пробелами, если в предложении запятые,они должны быть пропущены
- solution(["This is a sample string"]) expected ["This" "sample" "string"]
- solution(["Some another sample"]) expected ["another" "sample"]
- solution(["Do, do, do, do... do it!"]) expected []
- */
+/* task 0
+Даны строки разделенные различным образом,
+верните строки разделенные / или _, в нижнем регистре
+solution("ActiveModel::Errors") => active_model/errors"
+solution("HelloHowAreYou") => "hello_how_are_you"
+solution("MyNAMEIsBOND-JamesBond") => my_name_is_bond_james_bond"
+solution("MAINCompany::BEST-MAINUser") => "main_company/best_main_user"
+*/
+
+const solution = (str) => {
+  //если больше двух букв с заглавной
+  //взять  буквы без последней
+  //сделать их строчными
+  //добавить подчеркиваение
+  //последнюю букву сделать строчной
 
 
-function solution(arr) {
-  var newStr = arr.join('').replace(/[^A-Za-z ]/g, "");
-  var newArr = newStr.split(' ');
-  var sum = 0;
-  newArr.forEach(elem => {
-    sum += elem.length;
-  });
-  var average = sum / newArr.length;
-  var lastArr = newArr.filter(elem => {
-    return elem.length > average;
-  });
-
-  console.log(lastArr);
+  // var endPos = str.match(/[A-Z\b]{2,}/g);
 
 
-}
-console.log('task 0 >>>>>>>>>>>>>>>>>>>>>>');
 
-solution(["This is a, sample string"]); //expected ["This" "sample" "string"]
-solution(["Some another sample"]);// expected ["another" "sample"]
-solution(["Do, do, do, do... do it!"]);// expected []
+  // if (endPos !== null) {
+  //   var newLongStrArr = [];
+  //   endPos.forEach(elem => {
+  //
+  //     var posStart = str.indexOf(elem);
+  //     // console.log(elem);
+  //     newLongStrArr.push(str.slice(posStart, elem.length));
+  //     // console.log(elem.length);
+  //
+  //     var pos = str.indexOf(elem);
+  //     var lastLetter = str[pos + elem.length];
+  //     if (lastLetter === "-") {
+  //       elem = '_' + elem.toLowerCase();
+  //     }
+  //     else {
+  //       // console.log('hi');
+  //       var newElem = '_' + elem.slice(-1).toLowerCase();
+  //       console.log(newElem);
+  //     }
+  //   });
+  // }
+  // console.log(endPos);
+  // var nextLetter =
 
-/* TASK 1
- Сделайте таблицу 5x5
- При клике на элемент, изменяйте цвет у элемента на красный.
- Но цвет у элемента должен изменяться пропорционально в другой половине квадрата*/
+  //если после последнего символа endPos идет -
+  //меняем регистр последнего символа и добавляем _ вначале
 
-function tableEvent() {
-  let tbody = document.querySelector('tbody');
-  tbody.addEventListener('click', function (e) {
-    var target = e.target;
-
-    if (target.tagName === 'TD') {
-      let tr = target.parentNode;
-      let firstTR = this.firstElementChild;
-      let lastTR = this.lastElementChild;
-      //средние ячейки первая и последняя строки
-      if (target.cellIndex !== 0 &&
-        target.cellIndex !== tr.childElementCount - 1) {
-
-        if (tr.rowIndex === 0) {
-          styling(lastTR.children[target.cellIndex]);
-        }
-        if (tr.rowIndex === this.childElementCount - 1) {
-          styling(firstTR.children[target.cellIndex]);
-        }
-
+  var array = str.split('');
+//взять часть из больших букв
+  var newStr = array.map(( elem, index )=>{
+    if(index !== 0){
+      if(elem === '-'){
+        elem = '_';
       }
-
-      switch (target) {
-        // углы
-        case firstTR.firstElementChild:
-          styling(lastTR.lastElementChild);
-          break;
-        case firstTR.lastElementChild:
-          styling(lastTR.firstElementChild);
-          break;
-        case lastTR.firstElementChild:
-          styling(firstTR.lastElementChild);
-          break;
-        case lastTR.lastElementChild:
-          styling(firstTR.firstElementChild);
-          break;
-        //средние ячейки первый и последний столбцы
-        case tr.firstElementChild:
-          styling(tr.lastElementChild);
-          break;
-        case tr.lastElementChild:
-          styling(tr.firstElementChild);
-          break;
+      if(elem === ':'){
+        elem = '%';
       }
+      var hasUpLetter = /[A-Z]/.test(elem);
+      // var hasUpLetter = /\b[A-Z]{2,}/.someLetters(elem);
+
+
+      return hasUpLetter ? '_' + elem.toLowerCase() : elem;
+    }
+    else{
+      return elem.toLowerCase();
     }
   });
-  function styling(elem) {
-    elem.style.backgroundColor = 'red';
-  }
-}
-console.log('task 1 >>>>>>>>>>>>>>>>>>>>>>');
+  // var newStr = str.match(/([A-Z])/g);
+  newStr = newStr.join('');
+  console.log(newStr);
 
-tableEvent();
+};
+solution("HelloHowAreYou"); // => "hello_how_are_you"
+solution("ActiveModel::Errors"); //=> active_model/errors"
+solution("MAINCompany"); // => "main_company"
+solution("MyNAMEIsBOND-JamesBond"); //=> my_name_is_bond_james_bond"
+
+//делим строку на части
+//-до совпадения
+// - совпадение
+//- после совпадения
