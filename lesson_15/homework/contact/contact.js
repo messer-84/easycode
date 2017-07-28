@@ -166,7 +166,7 @@ const app = {
     },
     createTR(parent, dataIndex){
         const tr = this.createTag('tr', parent);
-        let obj = this.userData[dataIndex];
+        let obj = this.userFields[dataIndex];
         for (var key in obj) {
             this.createTagText('td', obj[key], tr);
         }
@@ -184,7 +184,7 @@ const app = {
             th.textContent = elem;
         });
         const tbody = this.createTag('tbody', table);
-        this.userData.forEach((elem, index) => {
+        this.userFields.forEach((elem, index) => {
             const tr = this.createTR(tbody, index);
         });
         const footerHtml = this.createFooter();
