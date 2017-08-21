@@ -1,0 +1,19 @@
+.app{
+    position: relative;
+    overflow: hidden;
+}
+#rightbox{
+    position: relative;
+    width: 400px;
+    height: 600px;
+    float: left;
+    border:3px solid blue;
+}
+#leftbox{
+    position: relative;
+    width: 400px;
+    height: 600px;
+    float: left;
+    margin: 0 30px 0 0;
+    border:3px solid #000;
+}
