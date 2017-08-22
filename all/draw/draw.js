@@ -74,7 +74,7 @@ function drawNestedSetsTree(data, node) {
     console.log('item', item.title);
     let li = document.createElement('li');
     li.textContent = item.title;
-    if (item.right - item.left == 1) {
+    if (item.right - item.left === 1) {
       ul.appendChild(li);
     } else {
       data.splice(0, 1);
