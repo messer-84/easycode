@@ -1,63 +1,62 @@
 const data = [
-    {
-    title: "Одежда",
+  {
+    title: 'Одежда',
     left: 1,
-    right: 22
+    right: 22,
   },
   {
-    title: "Мужская",
+    title: 'Мужская',
     left: 2,
-    right: 9
+    right: 9,
   },
   {
-    title: "Женская",
+    title: 'Женская',
     left: 10,
-    right: 21
+    right: 21,
   },
   {
-    title: "Костюмы",
+    title: 'Костюмы',
     left: 3,
-    right: 8
+    right: 8,
   },
   {
-    title: "Платья",
+    title: 'Платья',
     left: 11,
-    right: 16
+    right: 16,
   },
   {
-    title: "Юбки",
+    title: 'Юбки',
     left: 17,
-    right: 18
+    right: 18,
   },
   {
-    title: "Блузы",
+    title: 'Блузы',
     left: 19,
-    right: 20
+    right: 20,
   },
   {
-    title: "Брюки",
+    title: 'Брюки',
     left: 4,
-    right: 5
+    right: 5,
   },
   {
-    title: "Жакеты",
+    title: 'Жакеты',
     left: 6,
-    right: 7
+    right: 7,
   },
   {
-    title: "Вечерние",
+    title: 'Вечерние',
     left: 12,
-    right: 13
+    right: 13,
   },
   {
-    title: "Летние",
+    title: 'Летние',
     left: 14,
-    right: 15
-  }
+    right: 15,
+  },
 ];
 
 var div = document.querySelector('.root');
-
 
 function drawNestedSetsTree(data, node) {
   const ul = document.createElement('ul');
@@ -67,13 +66,15 @@ function drawNestedSetsTree(data, node) {
   });
 
   let counts = data.length;
-  console.log('counts',counts);
-  for (let i = 0; i < counts; i++ ) {
+
+  console.log('counts', counts);
+
+  for (let i = 0; i < counts; i++) {
     let item = data[i];
     console.log('item', item.title);
     let li = document.createElement('li');
     li.textContent = item.title;
-    if ((item.right - item.left) == 1) {
+    if (item.right - item.left == 1) {
       ul.appendChild(li);
     } else {
       data.splice(0, 1);
